@@ -1,126 +1,126 @@
 # Sudoku – Design Patterns
 
-Een uitgebreide **Sudoku-applicatie** gebouwd in C# als oefening in objectgeoriënteerd design en klassiekere **design patterns**.  
-Je kunt zelf Sudoku’s oplossen, hints gebruiken en verschillende varianten spelen (klassiek, andere formaten, Samurai, Jigsaw).
+A comprehensive **Sudoku application** built in C# as an exercise in object-oriented design and classic **design patterns**.  
+You can solve Sudokus, use hints, and play different variants (classic, other grid sizes, Samurai, Jigsaw).
 
 ---
 
-## Inhoud
+## Contents
 
-- [Over het project](#over-het-project)
-- [Belangrijkste features](#belangrijkste-features)
-- [Design patterns en architectuur](#design-patterns-en-architectuur)
-- [Projectstructuur](#projectstructuur)
-- [Installatie & gebruik](#installatie--gebruik)
+- [About the project](#about-the-project)
+- [Key features](#key-features)
+- [Design patterns and architecture](#design-patterns-and-architecture)
+- [Project structure](#project-structure)
+- [Installation & usage](#installation--usage)
 - [Unit tests](#unit-tests)
-- [Diagrammen](#diagrammen)
-- [Mogelijke uitbreidingen](#mogelijke-uitbreidingen)
+- [Diagrams](#diagrams)
+- [Possible extensions](#possible-extensions)
 - [Credits](#credits)
-- [Licentie](#licentie)
+- [License](#license)
 
 ---
 
-## Over het project
+## About the project
 
-Dit project is ontwikkeld als **Design Patterns / OOP-opdracht**.  
-De applicatie focust niet alleen op het oplossen van Sudoku’s, maar vooral op een **flexibele en uitbreidbare structuur**:
+This project was developed as a **Design Patterns / OOP assignment**.  
+The application does not only focus on solving Sudokus, but also on a **flexible and extensible structure**:
 
-- Ondersteuning voor meerdere Sudoku-varianten.
-- Duidelijk gescheiden domeinlogica, UI en infrastructuur.
-- Code georganiseerd rond herbruikbare en herkenbare design patterns.
+- Support for multiple Sudoku variants.  
+- Clear separation of domain logic, UI, and infrastructure.  
+- Code organized around reusable and recognizable design patterns.
 
-Het doel is om te laten zien hoe je een groeiende Sudoku-app netjes kunt houden, ook als er meer varianten en functionaliteit bijkomen.
+The goal is to demonstrate how to keep a growing Sudoku application clean and maintainable, even as more variants and functionality are added.
 
 ---
 
-## Belangrijkste features
+## Key features
 
-- ✅ **Meerdere Sudoku-formaten**
-  - Klassieke **9×9 Sudoku**
-  - Sudoku’s met **andere formaten** (bijv. kleinere/gr grotere roosters)
+- ✅ **Multiple Sudoku formats**
+  - Classic **9×9 Sudoku**
+  - Sudokus with **other grid sizes** (smaller/larger boards)
   - **Samurai Sudoku**
   - **Jigsaw / Irregular Sudoku**
 
-- 🎮 **Speelbaar voor gebruikers**
-  - Los zelf een Sudoku op in de applicatie.
-  - Mogelijkheid om **hulpgetallen / hints** te gebruiken.
-  - Validatie van invoer (rij, kolom en blokregels).
+- 🎮 **Playable for users**
+  - Solve a Sudoku directly in the application.
+  - Option to use **hints / candidate numbers**.
+  - Input validation (row, column, and region rules).
 
-- 🧩 **Ontworpen met design patterns**
-  - Flexibel toevoegen van nieuwe varianten of regels.
-  - Duidelijke modellen voor bord, vakjes, regels, etc.
+- 🧩 **Built with design patterns**
+  - Easily add new variants or rules.
+  - Clear models for board, cells, rules, etc.
 
 - 🧪 **Unit tests**
-  - Losgekoppelde logica die via het project `Sudoku.Tests` getest kan worden.
-  - Tests voor o.a. geldige/ongeldige borden en oplossingslogica.
+  - Decoupled logic testable via the `Sudoku.Tests` project.
+  - Tests for board validity, rule enforcement, and solving logic.
 
 ---
 
-## Design patterns en architectuur
+## Design patterns and architecture
 
-De implementatie is rondom klassieke **design patterns** opgebouwd om uitbreidbaarheid en onderhoudbaarheid te verbeteren.  
-Enkele voorbeelden van patronen die in dit soort Sudoku-architecturen passen en waar dit project op leunt:
+The implementation is built around classic **design patterns** to improve extensibility and maintainability.  
+Some examples of patterns commonly used in Sudoku architectures and applied in this project:
 
-- **Factory / Abstract Factory**
-  - Voor het aanmaken van verschillende Sudoku-typen (klassiek, Samurai, Jigsaw, andere groottes).
-  - Maakt het eenvoudig om nieuwe varianten toe te voegen zonder bestaande code te breken.
+- **Factory / Abstract Factory**  
+  To create different Sudoku types (classic, Samurai, Jigsaw, custom sizes).  
+  Allows adding new variants without breaking existing code.
 
-- **Strategy**
-  - Voor verschillende **oplosstrategieën** of **hint-algoritmes**.
-  - Laat toe om bijvoorbeeld een “basic” en een “advanced” strategie te wisselen zonder de rest van de code aan te passen.
+- **Strategy**  
+  For various **solving strategies** or **hint algorithms**.  
+  Lets you switch, e.g., between “basic” and “advanced” solving approaches without modifying the rest of the system.
 
-- **Composite**
-  - Bruikbaar voor borden die bestaan uit meerdere deelborden (zoals **Samurai Sudoku**).
-  - Maakt het mogelijk om borden als één geheel te behandelen, ook al bestaan ze intern uit meerdere gekoppelde roosters.
+- **Composite**  
+  Useful for boards composed of multiple sub-boards (e.g., **Samurai Sudoku**).  
+  Makes it possible to treat complex multi-board layouts as a single structure.
 
-- **Observer / Event-achtig gedrag**
-  - Voor UI-updates wanneer een vakje verandert.
-  - Laat model en presentatie losjes gekoppeld samenwerken.
+- **Observer / Event-driven behavior**  
+  For UI updates when a cell changes.  
+  Keeps model and presentation loosely coupled.
 
-- **SOLID-principes**
-  - Scheiding van verantwoordelijkheden (bord, regels, UI, opslag, etc.).
-  - Makkelijker testen en uitbreiden.
+- **SOLID principles**  
+  Clear separation of responsibilities (board, rules, UI, storage, etc.).  
+  Easier to test and extend.
 
-> Tip: bekijk de klassediagrammen in de root van de repository om de architectuur snel te overzien.
+> Tip: check the class diagrams in the root folder to get a quick overview of the architecture.
 
 ---
 
-## Projectstructuur
+## Project structure
 
-Hoofdmappen en bestanden:
+Main folders and files:
 
 - `Sudoku/`  
-  De hoofdapplicatie:
-  - Domein- en bordmodellen.
-  - Logica voor verschillende Sudoku-typen.
-  - UI / entry point van de applicatie.
+  The main application:
+  - Domain and board models  
+  - Logic for different Sudoku types  
+  - UI / application entry point
 
 - `Sudoku.Tests/`  
-  Unit-testproject:
-  - Testcases voor bordvalidatie, regels en (mogelijk) oplossers.
+  Unit test project:
+  - Test cases for board validation, rules, and (potential) solvers
 
 - `Design Patterns 1.sln`  
-  Visual Studio-oplossing die beide projecten bundelt.
+  Visual Studio solution that includes both projects.
 
-- Documentatie & bijlagen in de root:
-  - `NewClassDiagram.jpg` – bijgewerkt klassediagram.
-  - `OldClassDiagram.jpg` – oudere versie van het klassediagram.
-  - `SequenceDiagram.jpg` – sequencediagram van belangrijke use-cases.
-  - `DP1_Persoonlijke_Samenvatting.pdf` – persoonlijke samenvatting van de opdracht.
-  - `Rubric Design Patterns 1 2020-2021.pdf` – beoordelingsrubric (schoolopdracht).
-  - `Uitleg patterns.docx` – uitleg van de gebruikte patronen.
+- Documentation & attachments in the root:
+  - `NewClassDiagram.jpg` – updated class diagram  
+  - `OldClassDiagram.jpg` – previous version  
+  - `SequenceDiagram.jpg` – sequence diagram of major use cases  
+  - `DP1_Persoonlijke_Samenvatting.pdf` – personal summary of the assignment  
+  - `Rubric Design Patterns 1 2020-2021.pdf` – evaluation rubric (school assignment)  
+  - `Uitleg patterns.docx` – explanation of the patterns used
 
 ---
 
-## Installatie & gebruik
+## Installation & usage
 
-### Vereisten
+### Requirements
 
 - **Windows**
-- **Visual Studio** (bijv. 2019/2022) met ondersteuning voor .NET (klassieke .NET Framework-omgeving).
-- De repository van GitHub.
+- **Visual Studio** (2019/2022) with .NET (classic .NET Framework)
+- The GitHub repository
 
-### Repository clonen
+### Clone the repository
 
 ```bash
 git clone https://github.com/ferrannl/Sudoku-Design-Patterns.git
