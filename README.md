@@ -13,7 +13,7 @@ You can solve Sudokus, use hints, and play various variants (classic, different 
 - [Project structure](#project-structure)
 - [Installation & usage](#installation--usage)
 - [Unit tests](#unit-tests)
-- [Diagrams](#diagrammen)
+- [Diagrams](#diagrams)
 - [Possible extensions](#possible-extensions)
 - [Credits](#credits)
 - [License](#license)
@@ -23,13 +23,13 @@ You can solve Sudokus, use hints, and play various variants (classic, different 
 ## About the project
 
 This project was developed as a **Design Patterns / OOP assignment**.  
-The application focuses not only on solving Sudokus, but especially on creating a **flexible and extensible architecture**:
+The application focuses on building a **flexible and extensible architecture**:
 
 - Support for multiple Sudoku variants.
 - Clean separation between domain logic, UI, and infrastructure.
-- Code organized around reusable and recognizable design patterns.
+- Code structured with reusable and recognizable design patterns.
 
-The goal is to demonstrate how to keep a growing Sudoku application clean and maintainable, even when more variants and features are added.
+The goal is to demonstrate how to keep a growing Sudoku application clean and maintainable, even as more variants and features are added.
 
 ---
 
@@ -37,78 +37,74 @@ The goal is to demonstrate how to keep a growing Sudoku application clean and ma
 
 - ✅ **Multiple Sudoku formats**
   - Classic **9×9 Sudoku**
-  - Sudokus with **different grid sizes**
+  - Custom grid sizes
   - **Samurai Sudoku**
   - **Jigsaw / Irregular Sudoku**
 
 - 🎮 **Fully playable**
-  - Solve any Sudoku manually within the application.
-  - Option to use **helper numbers / hints**.
+  - Solve Sudokus manually inside the application.
+  - Optional **helper numbers / hints**.
   - Input validation (rows, columns, and blocks).
 
 - 🧩 **Designed with patterns**
-  - Easily add new variants or rules.
-  - Clear models for boards, cells, rules, etc.
+  - Easily add new rules or Sudoku variants.
+  - Clean object models for boards, cells, constraints, etc.
 
 - 🧪 **Unit tests**
-  - Decoupled logic testable via the `Sudoku.Tests` project.
-  - Tests for valid/invalid boards and solving logic.
+  - Tests included in the `Sudoku.Tests` project.
+  - Covers board validation and solving logic.
 
 ---
 
 ## Design Patterns & Architecture
 
-The implementation uses classic **design patterns** to improve extensibility and maintainability.  
-Examples of patterns used in the architecture:
+Patterns used in this project include:
 
-- **Factory / Abstract Factory**  
-  For creating different Sudoku types (classic, Samurai, Jigsaw, custom sizes) without modifying existing code.
+### **Factory / Abstract Factory**
+To create different Sudoku types without modifying existing code.
 
-- **Strategy**  
-  For various solving strategies or hint algorithms.  
-  Allows switching between basic and advanced strategies easily.
+### **Strategy**
+For swapping solving strategies or hint algorithms.
 
-- **Composite**  
-  Useful for boards consisting of multiple sub-boards (e.g., **Samurai Sudoku**).  
-  Treats multiple interconnected grids as one logical board.
+### **Composite**
+Perfect for multi-board structures like **Samurai Sudoku**.
 
-- **Observer / Event-driven structure**  
-  For UI updates when a cell changes.  
-  Keeps model and presentation loosely coupled.
+### **Observer**
+Used for UI updates when cells change.
 
-- **SOLID principles**  
-  Ensures clean separation of concerns and easier testing.
+### **SOLID principles**
+Ensures maintainable and testable code.
 
-> Tip: Check the class diagrams in the root of the repository for a quick overview of the architecture.
+> See the diagrams below for a visual overview of the system architecture.
 
 ---
 
 ## Project Structure
 
-Main folders and files:
+Sudoku/
 
-- **`Sudoku/`**  
-  Main application:
-  - Domain and board models  
-  - Logic for different Sudoku types  
-  - UI / entry point
+Domain models
 
-- **`Sudoku.Tests/`**  
-  Unit tests:
-  - Validation tests  
-  - Rule tests  
-  - Solver tests
+Sudoku types
 
-- **`Design Patterns 1.sln`**  
-  Visual Studio solution including all projects.
+UI / Program entry point
 
-- **Documentation in the root:**
-  - `NewClassDiagram.jpg` – updated class diagram  
-  - `OldClassDiagram.jpg` – older class diagram  
-  - `SequenceDiagram.jpg` – sequence diagram  
-  - `DP1_Persoonlijke_Samenvatting.pdf` – personal summary  
-  - `Rubric Design Patterns 1 2020-2021.pdf` – assignment rubric  
-  - `Uitleg patterns.docx` – explanation of the patterns used
+
+Sudoku.Tests/
+
+Unit tests for logic and solver
+
+
+Design Patterns 1.sln
+
+Documentation in the repository root:
+
+- `NewClassDiagram.jpg`
+- `OldClassDiagram.jpg`
+- `SequenceDiagram.jpg`
+- `DP1_Persoonlijke_Samenvatting.pdf`
+- `Rubric Design Patterns 1 2020-2021.pdf`
+- `Uitleg patterns.docx`
 
 ---
 
@@ -116,9 +112,9 @@ Main folders and files:
 
 ### Requirements
 
-- **Windows**
-- **Visual Studio 2019/2022** with .NET Framework support
-- Git (optional)
+- Windows  
+- Visual Studio 2019/2022  
+- .NET Framework support  
 
 ### Clone the repository
 
@@ -126,58 +122,64 @@ Main folders and files:
 git clone https://github.com/ferrannl/Sudoku-Design-Patterns.git
 cd Sudoku-Design-Patterns
 
-Open the solution in Visual Studio and run the main project.
+Open the solution in Visual Studio and run the project.
 
 
 ---
 
 Unit Tests
 
-The Sudoku.Tests project includes tests for:
+Run all tests via Test Explorer in Visual Studio.
+
+The tests cover:
 
 Board validation
 
-Rule compliance
+Rules & constraints
 
 Solver behavior
 
 Edge cases for custom Sudoku variants
 
 
-All tests can be run via the Visual Studio Test Explorer.
+
+---
+
+📊 Diagrams
+
+Below are the architectural diagrams included in this repository:
 
 
 ---
 
-Diagrams
+🆕 Updated Class Diagram
 
-The repository includes:
+<img src="./NewClassDiagram.jpg" alt="New Class Diagram" width="700"/>
+---
 
-Class diagrams
+🏛️ Old Class Diagram
 
-Sequence diagrams
+<img src="./OldClassDiagram.jpg" alt="Old Class Diagram" width="700"/>
+---
 
-Pattern explanations
+🔁 Sequence Diagram
 
-
-These illustrate how the architecture is structured and how Sudoku objects interact.
-
-
+<img src="./SequenceDiagram.jpg" alt="Sequence Diagram" width="700"/>
 ---
 
 Possible Extensions
 
-Ideas for future work:
+Ideas for future improvements:
 
-Add more solving strategies
+More solving strategies
 
-Add difficulty estimation
+Difficulty estimation
 
-Add a GUI framework such as WPF or MAUI
+Puzzle generator
 
-Add a puzzle generator
+GUI framework (WPF, MAUI, Avalonia)
 
-Add more Sudoku variants (Killer, Hyper, Thermo, etc.)
+Additional Sudoku variants (Killer, Thermo, Hyper, etc.)
 
 
 
@@ -185,7 +187,7 @@ Add more Sudoku variants (Killer, Hyper, Thermo, etc.)
 
 Credits
 
-Developed as part of a Design Patterns / OOP course assignment.
+Created as part of a Design Patterns / OOP course assignment.
 
 
 ---
@@ -193,4 +195,4 @@ Developed as part of a Design Patterns / OOP course assignment.
 License
 
 This project is provided for educational purposes.
-Feel free to fork, modify, or use it as a reference.
+Feel free to fork or modify it.
