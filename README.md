@@ -121,6 +121,7 @@ Documentation in the repository root:
 ```bash
 git clone https://github.com/ferrannl/Sudoku-Design-Patterns.git
 cd Sudoku-Design-Patterns
+```
 
 Open the solution in Visual Studio and run the project.
 
